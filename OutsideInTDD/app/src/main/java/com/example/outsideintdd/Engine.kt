@@ -1,6 +1,6 @@
 package com.example.outsideintdd
 
-class Engine(var temperature: Int,
+class Engine(var temperature: Int = 15,
              var isTurnedOn: Boolean = false)
 {
     fun turnOn() {

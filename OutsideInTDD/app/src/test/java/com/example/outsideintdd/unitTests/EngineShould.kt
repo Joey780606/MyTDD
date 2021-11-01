@@ -7,7 +7,7 @@ import org.junit.Test
 
 class EngineShould {
 
-    private val engine = Engine(15)
+    private val engine = Engine()
 
     @Test
     fun turnOn() {
