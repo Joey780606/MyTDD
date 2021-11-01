@@ -1,6 +1,7 @@
 package com.example.outsideintdd.acceptanceTests
 
 import com.example.outsideintdd.Car
+import com.example.outsideintdd.Engine
 import junit.framework.TestCase.assertEquals
 import junit.framework.TestCase.assertTrue
 

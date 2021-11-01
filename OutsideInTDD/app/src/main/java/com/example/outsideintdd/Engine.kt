@@ -1,7 +1,10 @@
 package com.example.outsideintdd
 
-class Engine {
+class Engine(var temperature: Int,
+             var isTurnedOn: Boolean = false)
+{
     fun turnOn() {
-        TODO("Not yet implemented")
+        isTurnedOn = true
+        temperature = 95
     }
 }
