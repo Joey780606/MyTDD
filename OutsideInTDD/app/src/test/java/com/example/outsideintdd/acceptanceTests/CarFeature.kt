@@ -1,6 +1,8 @@
 package com.example.outsideintdd.acceptanceTests
 
-import org.junit.Assert.assertEquals
+import com.example.outsideintdd.Car
+import junit.framework.TestCase.assertEquals
+
 import org.junit.Test
 
 class CarFeature {
@@ -12,6 +14,6 @@ class CarFeature {
 
         car.turnOn()
 
-        assertEquals(5.5, car.fuel, 0.001)  //Follow latest parameter
+        assertEquals(5.5, car.fuel)
     }
 }
