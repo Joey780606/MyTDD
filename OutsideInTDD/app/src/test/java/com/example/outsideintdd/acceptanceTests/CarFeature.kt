@@ -7,7 +7,7 @@ import junit.framework.TestCase.assertTrue
 import org.junit.Test
 
 class CarFeature {
-    private val engine = Engine()
+/*    private val engine = Engine()
     val car = Car(6.0, engine)
 
     @Test
@@ -23,5 +23,5 @@ class CarFeature {
 
         assertEquals(95, car.engine.temperature)
         assertTrue(car.engine.isTurningOn)
-    }
+    }*/
 }
