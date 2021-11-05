@@ -25,13 +25,18 @@ class CarFeature {
     }
 
     @Test
-    fun carIsTurningOnItEngineAndIncreaseTheTemperature() = runBlockingTest {
+    fun carIsTurningOnItEngineAndIncreaseTheTemperatureGradually() = runBlockingTest {
         car.turnOn()
 
-        coroutinesTestRule.advanceTimeBy(6000)
-        //多等六秒,配合Engine.kt 的 delay(6000), 若改成 5000,就會出錯
+        coroutinesTestRule.advanceTimeBy(2000)
+        assertEquals(25, car.engine.temperature)
 
+        coroutinesTestRule.advanceTimeBy(2000)
+        assertEquals(50, car.engine.temperature)
+
+        coroutinesTestRule.advanceTimeBy(2000)
         assertEquals(95, car.engine.temperature)
+
         assertTrue(car.engine.isTurnedOn)
     }
 }
