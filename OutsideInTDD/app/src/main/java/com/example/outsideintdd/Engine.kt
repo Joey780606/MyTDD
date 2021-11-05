@@ -27,5 +27,7 @@ class Engine(var temperature: Int = 15,
             emit(temperature)
             Log.d("COURSE", "Engine has turned on")
         }
+
+        //throw Exception()
     }
 }
