@@ -12,6 +12,7 @@ import com.schibsted.spain.barista.assertion.BaristaRecyclerViewAssertions.asser
 import com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed
 import com.schibsted.spain.barista.internal.matcher.DrawableMatcher.Companion.withDrawable
 import org.hamcrest.Description
+import org.hamcrest.Matcher
 import org.hamcrest.TypeSafeMatcher
 import org.hamcrest.core.AllOf.allOf
 
@@ -20,7 +21,6 @@ import org.junit.runner.RunWith
 
 import org.junit.Assert.*
 import org.junit.Rule
-import java.util.regex.Matcher
 
 @RunWith(AndroidJUnit4::class)
 class PlaylistFeature {
@@ -34,6 +34,8 @@ class PlaylistFeature {
 
     @Test
     fun displayListOfPlayLists() {
+        Thread.sleep(4000)  // temporary process, will remove later
+
         assertRecyclerViewItemCount(R.id.playlists_list, 10)
         //也是第三方Barista schibsted library
 

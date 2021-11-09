@@ -5,5 +5,5 @@ import androidx.lifecycle.ViewModel
 
 class PlayListViewModel : ViewModel() {
 
-    val playlists = MutableLiveData<List<Playlist>>()
+    val playlists = MutableLiveData<Result<List<Playlist>>>()   // Result是後來Refactor,
 }
