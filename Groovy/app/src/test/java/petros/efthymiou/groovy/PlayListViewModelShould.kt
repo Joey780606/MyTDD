@@ -24,11 +24,11 @@ class PlayListViewModelShould {
     @get:Rule
     var instantTestExecutorRule = InstantTaskExecutorRule() //這是為 LiveData
 
-    val viewModel: PlayListViewModel
-    val repository: PlaylistRepository = mock()
+    private val viewModel: PlayListViewModel
+    private val repository: PlaylistRepository = mock()
 
     init {
-        viewModel = PlayListViewModel()
+        viewModel = PlayListViewModel(repository)
     }
 
     @Test
