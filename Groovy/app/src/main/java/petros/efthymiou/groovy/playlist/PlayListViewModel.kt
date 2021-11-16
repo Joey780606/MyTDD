@@ -2,7 +2,7 @@ package petros.efthymiou.groovy.playlist
 
 import androidx.lifecycle.*
 
-class PlayListViewModel(
+class PlaylistViewModel(
     private val repository: PlaylistRepository
 ) : ViewModel() {
 

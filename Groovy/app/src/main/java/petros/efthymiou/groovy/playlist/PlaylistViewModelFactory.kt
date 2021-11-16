@@ -8,7 +8,7 @@ class PlaylistViewModelFactory(
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return PlayListViewModel(repository) as T
+        return PlaylistViewModel(repository) as T
     }
 
 }

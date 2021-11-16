@@ -13,7 +13,7 @@ import petros.efthymiou.groovy.R
 
 class PlaylistFragment : Fragment() {
 
-    lateinit var viewModel: PlayListViewModel
+    lateinit var viewModel: PlaylistViewModel
     lateinit var viewModelFactory: PlaylistViewModelFactory
     private val repository = PlaylistRepository()
 
@@ -48,7 +48,7 @@ class PlaylistFragment : Fragment() {
 
     private fun setupViewModel() {
         viewModelFactory = PlaylistViewModelFactory(repository)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(PlayListViewModel::class.java)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(PlaylistViewModel::class.java)
     }
 
     companion object {

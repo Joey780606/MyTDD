@@ -20,10 +20,10 @@ import petros.efthymiou.groovy.utils.getValueForTest
  */
 class PlayListViewModelShould : BaseUnitTest() {    //BaseUnitTest.kt 要設為open 或 abstract, BaseUnitTest() 才不會出現紅字
 
-
     private val repository: PlaylistRepository = mock()
     private val playlists = mock<List<Playlist>>()
     private val expected = Result.success(playlists)
+    private val exception = RuntimeException("Something went wrong")
 
     @Test
     fun getPlaylistsFromRepository() = runBlockingTest {
@@ -41,7 +41,22 @@ class PlayListViewModelShould : BaseUnitTest() {    //BaseUnitTest.kt 要設為o
         assertEquals(expected, viewModel.playlists.getValueForTest())
     }
 
-    private fun mockSuccessfulCase(): PlayListViewModel {
+    @Test
+    fun emitErrorWhenReceiveError() {
+        runBlocking {
+            whenever(repository.getPlaylists()).thenReturn(
+                flow {
+                    emit(Result.failure<List<Playlist>>(exception))
+                }
+            )
+        }
+        val viewModel = PlaylistViewModel(repository)
+
+        assertEquals(exception, viewModel.playlists.getValueForTest()!!.exceptionOrNull())    //這樣OK
+        //assertEquals(RuntimeException("another message"), viewModel.playlists.getValueForTest()!!.exceptionOrNull())    //這樣就有錯誤
+    }
+
+    private fun mockSuccessfulCase(): PlaylistViewModel {
         runBlocking {
             whenever(repository.getPlaylists()).thenReturn(
                 flow {
@@ -50,6 +65,6 @@ class PlayListViewModelShould : BaseUnitTest() {    //BaseUnitTest.kt 要設為o
             )
         }
 
-        return PlayListViewModel(repository)
+        return PlaylistViewModel(repository)
     }
 }
