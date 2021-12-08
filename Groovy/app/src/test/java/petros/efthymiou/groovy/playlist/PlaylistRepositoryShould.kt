@@ -14,6 +14,7 @@ import petros.efthymiou.groovy.utils.BaseUnitTest
 class PlaylistRepositoryShould : BaseUnitTest() {
     private val service : PlaylistService = mock()
     private val playlists = mock<List<Playlist>>()
+    private val exception = RuntimeException("Something went wrong")
 
     @Test
     fun getsPlaylistsFromService() : Unit = runBlockingTest {
@@ -29,6 +30,23 @@ class PlaylistRepositoryShould : BaseUnitTest() {
         val repository = mockSuccessfulCase()
 
         assertEquals(playlists, repository.getPlaylists().first().getOrNull())
+    }
+
+    @Test
+    fun propagateErrors() = runBlockingTest {
+        val repository = mockFailureCase()
+        assertEquals(exception, repository.getPlaylists().first().exceptionOrNull())
+    }
+
+    private suspend fun mockFailureCase(): PlaylistRepository {
+        whenever(service.fetchPlaylists()).thenReturn(
+            flow {
+                emit(Result.failure<List<Playlist>>(exception))
+            }
+        )
+
+        val repository = PlaylistRepository(service)
+        return repository
     }
 
     private suspend fun mockSuccessfulCase(): PlaylistRepository {
